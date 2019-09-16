@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <launch>
 
-<include file="$(find SLAM)/launch/joystick_ABot.launch" />
+<include file="$(find Fire_Fighting_Robot)/launch/ABot.launch" />
+
+<include file="$(find Fire_Fighting_Robot)/launch/joystick.launch" />
+
 
 <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
 
