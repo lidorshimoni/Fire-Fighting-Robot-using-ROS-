@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>SLAM</name>
+  <name>Fire_Fighting_Robot</name>
   <version>0.0.0</version>
-  <description>The SLAM package</description>
+  <description>Robot that helps fire fighters find humans that are trapped in a building, and mappes the surrounding and identify fire </description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="lab@todo.todo">lab</maintainer>
+  <maintainer email="lidor.shim@gmail.com">Lidor Shimoni</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->
   <!-- Commonly used license strings: -->
   <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
-  <license>TODO</license>
+  <license>BGU</license>
 
 
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
@@ -25,7 +25,7 @@
   <!-- Author tags are optional, multiple are allowed, one per tag -->
   <!-- Authors do not have to be maintainers, but could be -->
   <!-- Example: -->
-  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
+  <author email="lidor.shim@gmail.com">Lidor Shimoni</author> -->
 
 
   <!-- The *depend tags are used to specify dependencies -->
