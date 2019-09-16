@@ -154,7 +154,7 @@
   <visual>
     <origin rpy="1.5707963267948966 0 0" xyz="0 0 0"/>
     <geometry>
-      <sphere length="0.1" radius="0.025"/>
+      <sphere length="0.1" radius="0.05"/>
     </geometry>
   </visual>
   <collision>

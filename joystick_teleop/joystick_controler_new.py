@@ -9,7 +9,6 @@ Move = [0,0,0,0]
 def callback(joy):
   global Move
   Move  = [joy.buttons[4],-joy.buttons[0],joy.buttons[3],-joy.buttons[1]]
-  #print "pose callback"
 
 def main ():
   global Move
@@ -30,8 +29,8 @@ def main ():
       #right.data = (Move[2]+Move[3])*3
       #left.data = (Move[0] - Move[3] + Move[1]) * 3
       #right.data = (Move[0] + Move[2] + Move[1]) * 3
-      vel.linear.x = (Move[0] + Move[1]) * 0.3
-      vel.angular.z = (Move[2] + Move[3])*0.3
+      vel.linear.x = (Move[0] + Move[1])*0.9  
+      vel.angular.z = (Move[2] + Move[3])*0.9
       pub.publish(vel)
       
       #pub_left.publish(left)
