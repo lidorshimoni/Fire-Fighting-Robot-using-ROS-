@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>
-
-<include file="$(find Fire_Fighting_Robot)/launch/ABot.launch" />
-
-<include file="$(find Fire_Fighting_Robot)/launch/joystick.launch" />
-
-</launch>
