@@ -154,13 +154,13 @@
   <visual>
     <origin rpy="1.5707963267948966 0 0" xyz="0 0 0"/>
     <geometry>
-      <sphere length="0.1" radius="0.05"/>
+      <sphere length="0.1" radius="0.03"/>
     </geometry>
   </visual>
   <collision>
     <origin rpy="1.5707963267948966 0 0" xyz="0 0 0"/>
     <geometry>
-      <sphere length="0.1" radius="0.025"/>
+      <sphere length="0.1" radius="0.03"/>
     </geometry>
   </collision>
       <surface>
