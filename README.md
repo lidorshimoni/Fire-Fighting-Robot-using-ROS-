@@ -11,17 +11,17 @@ By [Lidor Shimoni](https://github.com/lidorshimoni), [Daniel Angel](https://gith
 For a simulation with joystick controller use:
 
 
-'''
+```
 roslaunch joystick_slam.launch
-'''
+```
 
 
 For a simulation with move_base controller use:
 
 
-'''
+```
 roslaunch move_base_slam.launch
-'''
+```
 
 ## Dependencies
 The following python packges are required:
