@@ -27,12 +27,5 @@ roslaunch move_base_slam.launch
 The following python packges are required:
 * python 3.X
 * teb_local_planner for move_base
-<!-- 
-Particles Intersection (PI) is a method to fuse multiple particle filter estimators, where the cross-dependencies of the observations is unknown.
-This package contain a PI implembtation for fusion the particle filters that estimates the state of a robot in a flat space.
-This package contain two main nodes:
-* particle_filter.py - an implemantation of a particle filter for robot localization using [1].
-* particlesintersection.py - an implemantation of a particle intersection for cooperative localization using [2].
 
-
-  -->
+<!-- ## Refrences -->
