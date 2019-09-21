@@ -25,11 +25,7 @@ roslaunch move_base_slam.launch
 
 ## Dependencies
 The following python packges are required:
-* python 3.*
-* numpy**
-* matplotlib**
-* sklearn**
-* sciPy**
+* python 3.X
 * teb_local_planner for move_base
 <!-- 
 Particles Intersection (PI) is a method to fuse multiple particle filter estimators, where the cross-dependencies of the observations is unknown.
