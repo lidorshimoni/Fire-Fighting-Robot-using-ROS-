@@ -7,7 +7,7 @@ By [Lidor Shimoni](https://github.com/lidorshimoni), [Daniel Angel](https://gith
 <!-- ## Example
 [![Watch the video](https://img.youtube.com/vi/CvRHvVOhvw0/default.jpg)](https://youtu.be/CvRHvVOhvw0) -->
 
-## Running
+## Running in simulation
 For a simulation with joystick controller use:
 
 
