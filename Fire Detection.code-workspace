@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "/home/magshimim/simulation_ws/src/Fire_Fighting_Robot"
+		}
+	],
+	"settings": {
+		"python.autoComplete.extraPaths": [
+			"/home/magshimim/simulation_ws/devel/lib/python2.7/dist-packages",
+			"/opt/ros/kinetic/lib/python2.7/dist-packages"
+		]
+	}
+}

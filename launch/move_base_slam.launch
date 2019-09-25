@@ -1,15 +1,19 @@
 <?xml version="1.0"?>
 <launch>
 
-
+<!-- Launch ABot -->
 <include file="$(find Fire_Fighting_Robot)/launch/ABot.launch" />
 
 <!-- Use move base Control-->
 <include file="$(find Fire_Fighting_Robot)/move_base/move_base.launch"/>
 
+<!-- Launch Rviz with config file -->
+<node type="rviz" name="rviz" pkg="rviz" args="-d $(find Fire_Fighting_Robot)/rviz/move_base_basic_view.rviz" />
 
+<!-- Slam -->
 <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
 
+<!-- Parameters -->
 <!-- Topic names -->
 <param name="scan_topic" value="scan" />
 
@@ -38,10 +42,10 @@
 <param name="map_update_angle_thresh" value="0.12" />
 
 <!-- Debug parameters -->
-<!--
-<param name="pub_drawings" value="true"/>
-<param name="pub_debug_output" value="true"/>
--->
+    <!--
+    <param name="pub_drawings" value="true"/>
+    <param name="pub_debug_output" value="true"/>
+    -->
 </node>
 
 
