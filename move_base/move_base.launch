@@ -4,8 +4,8 @@
   <master auto="start"/>
 
   <arg name="base_global_planner" default="navfn/NavfnROS"/>
-  <!--<arg name="base_local_planner" default="dwa_local_planner/DWAPlannerROS"/>-->
-  <arg name="base_local_planner" default="teb_local_planner/TebLocalPlannerROS"/>
+  <arg name="base_local_planner" default="dwa_local_planner/DWAPlannerROS"/>
+  <!-- <arg name="base_local_planner" default="teb_local_planner/TebLocalPlannerROS"/> -->
 
   
   <!--- Run Move Base -->
@@ -20,12 +20,12 @@
     <param name="local_costmap/width" value="4"/>
     <param name="local_costmap/height" value="4"/> 
   
-    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+    <!-- <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" /> -->
     <param name="controller_frequency" value="2" />
     
-    <!-- <remap from="/ABot/ABot/scan" to="/ABot/scan"/> -->
-    <!--<remap from="cmd_vel" to="ABot/cmd_vel" />
-    <remap from="move_base_simple/goal" to="ABot/move_base_simple/goal" />--> 
+    <!-- <remap from="/ABot/ABot/scan" to="/ABot/scan"/> --> -->
+    <!-- <remap from="cmd_vel" to="ABot/cmd_vel" /> -->
+    <!-- <remap from="move_base_simple/goal" to="ABot/move_base_simple/goal" />  -->
 
   </node>
 
