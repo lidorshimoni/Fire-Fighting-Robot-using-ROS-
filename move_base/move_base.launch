@@ -4,8 +4,8 @@
   <master auto="start"/>
 
   <arg name="base_global_planner" default="navfn/NavfnROS"/>
-  <arg name="base_local_planner" default="dwa_local_planner/DWAPlannerROS"/>
-  <!-- <arg name="base_local_planner" default="teb_local_planner/TebLocalPlannerROS"/> -->
+  <!-- <arg name="base_local_planner" default="dwa_local_planner/DWAPlannerROS"/> -->
+  <arg name="base_local_planner" default="teb_local_planner/TebLocalPlannerROS"/>
 
   
   <!--- Run Move Base -->
