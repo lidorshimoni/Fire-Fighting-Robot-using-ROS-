@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<xacro:property name="M_PI" value="3.1415926535897931" />
-
-<!-- Front Laser -->
-<xacro:macro name="laser" params="name parent xyz rpy meshes" >
+<!-- Front Camera -->
+<xacro:macro name="camera" params="name parent xyz rpy meshes" >
 
   <joint name="${parent}_${name}_joint" type="fixed">
       <axis xyz="0 0 1" />
@@ -68,6 +66,5 @@
         </sensor>
     </gazebo>
 </xacro:macro>
-
 
 </robot>

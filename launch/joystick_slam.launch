@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <launch>
 
-<include file="$(find Fire_Fighting_Robot)/launch/ABot.launch" />
+<include file="$(find Fire_Fighting_Robot)/launch/Utilities/ABot.launch" />
 
-<include file="$(find Fire_Fighting_Robot)/launch/joystick.launch" />
+<include file="$(find Fire_Fighting_Robot)/launch/Utilities/joystick.launch" />
 
 
 <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">

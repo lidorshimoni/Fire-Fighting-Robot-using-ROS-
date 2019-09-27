@@ -2,7 +2,7 @@
 <launch>
 
 <!-- Launch ABot -->
-<include file="$(find Fire_Fighting_Robot)/launch/ABot.launch" />
+<include file="$(find Fire_Fighting_Robot)/launch/Utilities/ABot.launch" />
 
 <!-- Use move base Control-->
 <include file="$(find Fire_Fighting_Robot)/move_base/move_base.launch"/>

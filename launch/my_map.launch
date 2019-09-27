@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>
-
-<include file="$(find SLAM)/launch/empty_world.launch" >
-  <arg name="world_name" value="$(find SLAM)/maps/model.world"/>
-</include>
-
-</launch>
