@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-<include file="$(find Fire_Fighting_Robot)/launch/my_map.launch" />
+<include file="$(find Fire_Fighting_Robot)/launch/Utilities/my_map.launch" />
 
   <!-- send table urdf to param server -->
   <param name="robot_description" command="$(find xacro)/xacro '$(find Fire_Fighting_Robot)/urdf/ABot.urdf.xacro'" />
