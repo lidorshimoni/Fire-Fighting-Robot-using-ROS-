@@ -1,6 +1,6 @@
 recovery_behaviour_enabled: true # true
 
-controller_frequency: 2
+controller_frequency: 3
 
 NavfnROS:
   allow_unknown: true 
@@ -44,7 +44,7 @@ DWAPlannerROS:
   max_scaling_factor: 0.2
 
 TebLocalPlannerROS:
-
+ footprint: [[0.2, 0.2], [-0.2, 0.2], [-0.2, -0.2], [0.2, -0.2], [0.3, 0]]
  odom_topic: /ABot/odom
  map_frame: /map
     
@@ -52,16 +52,16 @@ TebLocalPlannerROS:
   
  teb_autosize: True
  dt_ref: 0.4
- dt_hysteresis: 0.06
+ dt_hysteresis: 0.1
  global_plan_overwrite_orientation: True
- max_global_plan_lookahead_dist: 0.3
+ max_global_plan_lookahead_dist: 3.0
  feasibility_check_no_poses: 5
     
  # Robot
 
- max_vel_x: 2
- max_vel_x_backwards: 1.5
- max_vel_theta: 3
+ max_vel_x: 0.6
+ max_vel_x_backwards: 0.4
+ max_vel_theta: 0.4
  acc_lim_x: 0.5
  acc_lim_theta: 0.5
  min_turning_radius: 0.0
@@ -71,19 +71,29 @@ TebLocalPlannerROS:
 
  # GoalTolerance
     
- xy_goal_tolerance: 0.1
+ xy_goal_tolerance: 0.2
  yaw_goal_tolerance: 0.1
  free_goal_vel: False
     
  # Obstacles
 
- min_obstacle_dist: 0.01
- include_costmap_obstacles: True
- costmap_obstacles_behind_robot_dist: 0.3
+ min_obstacle_dist: 0.1
+ inflarion_dist: 0.6
+ dynamic_obstacle_inflation_dist: 0.6
+
+ include_dynamic_obstacles: false
+ include_costmap_obstacles: true
+ legacy_obstacle_association: false
+
+ obstacle_association_force_inclution_factor: 1.5
+ obstacle_association_cutoff_factor: 5.0
+ costmap_obstacles_behind_robot_dist: 1.5
  obstacle_poses_affected: 30
- costmap_converter_plugin: ""
- costmap_converter_spin_thread: True
- costmap_converter_rate: 1
+ 
+
+  #  costmap_converter_plugin: ""
+  #  costmap_converter_spin_thread: True
+  #  costmap_converter_rate: 1
 
  # Optimization
     

@@ -1,13 +1,13 @@
 global_frame: map
 robot_base_frame: base_link
 update_frequency: 5.0
-publish_frequency: 1.0
+publish_frequency: 2.0
 static_map: true
 rolling_window: true
 resolution: 0.025
 allow_unknown: true
-width value: 4
-height: 4 
+width value: 10
+height: 10
 
 #inflation:
 #    inflation_radius: 0.2
