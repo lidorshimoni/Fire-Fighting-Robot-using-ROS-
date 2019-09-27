@@ -6,6 +6,8 @@ static_map: true
 rolling_window: true
 resolution: 0.025
 allow_unknown: true
+width value: 4
+height: 4 
 
 #inflation:
 #    inflation_radius: 0.2

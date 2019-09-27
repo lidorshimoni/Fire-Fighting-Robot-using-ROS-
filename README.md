@@ -24,8 +24,10 @@ roslaunch move_base_slam.launch
 ```
 
 ## Dependencies
-The following python packges are required:
+The following dependencies are required:
 * python 3.X
-* teb_local_planner for move_base
+* teb_local_planner as move_base -> local_planner
+* NavfnROS as move_base -> global_planner
+* diffdrive
 
 <!-- ## Refrences -->
