@@ -30,5 +30,8 @@ The following dependencies are required:
 * teb_local_planner as move_base -> local_planner
 * NavfnROS as move_base -> global_planner
 * diffdrive
+* frontier_exploration
+### Optional
+* Explore_lite
 
 <!-- ## Refrences -->
