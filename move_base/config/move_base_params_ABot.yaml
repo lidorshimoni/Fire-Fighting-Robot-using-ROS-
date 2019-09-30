@@ -1,129 +1,145 @@
-recovery_behaviour_enabled: true # true
+shutdown_costmaps: false
 
-controller_frequency: 3
+controller_frequency: 5.0
+controller_patience: 3.0
 
-NavfnROS:
-  allow_unknown: true 
-  cost factor: 0.55
-  neutral cost: 66
+planner_frequency: 1.0
+planner_patience: 5.0
 
-DWAPlannerROS:
-  # Robot configuration parameters  
-  acc_lim_x: 2.5  
-  acc_lim_y: 0
-  acc_lim_th: 4
+oscillation_timeout: 10.0
+oscillation_distance: 0.2
 
-  max_vel_x: 2
-  min_vel_x: 0
-  max_vel_y: 0
-  min_vel_y: 0
+# local planner - default is trajectory rollout
+base_local_planner: "dwa_local_planner/DWAPlannerROS"
 
-  max_trans_vel: 3
-  min_trans_vel: 0.1
-  max_rot_vel: 6
-  min_rot_vel: 0.1
+base_global_planner: "global_planner/GlobalPlanner"
+
+# NavfnROS:
+#   allow_unknown: true 
+
+
+# GlobalPlanner:
+#   allow_unknown: true 
+#   cost factor: 0.55
+#   neutral cost: 66
+
+# DWAPlannerROS:
+#   # Robot configuration parameters  
+#   acc_lim_x: 2.5  
+#   acc_lim_y: 0
+#   acc_lim_th: 4
+
+#   max_vel_x: 2
+#   min_vel_x: 0
+#   max_vel_y: 0
+#   min_vel_y: 0
+
+#   max_trans_vel: 3
+#   min_trans_vel: 0.1
+#   max_rot_vel: 6
+#   min_rot_vel: 0.1
   
-  # Simulation configurations
-  sim_time: 1.7
-  controller_frequency: 10.0
-  #~ sim_granularity: 1.7
+#   # Simulation configurations
+#   sim_time: 4.0
+#   controller_frequency: 5.0
+#   sim_granularity: 0.025
 
-  # Goal Tolerance Parameters
-  yaw_goal_tolerance: 0.1 
-  xy_goal_tolerance: 0.3
-  latch_xy_goal_tolerance: true
+#   # Goal Tolerance Parameters
+#   yaw_goal_tolerance: 0.1 
+#   xy_goal_tolerance: 0.3
+#   latch_xy_goal_tolerance: true
 
 
-  # Trajectory Scoring Parameters
-  path_distance_bias: 32.0
-  goal_distance_bias: 24.0
-  occdist_scale: 0.1
-  forward_point_distance: 0.325
-  stop_time_buffer: 0.2
-  scaling_speed: 0.25
-  max_scaling_factor: 0.2
+#   # Trajectory Scoring Parameters
+#   path_distance_bias: 20.0
+#   goal_distance_bias: 24.0
+#   occdist_scale: 0.1
+#   forward_point_distance: 0.325
+#   stop_time_buffer: 0.2
+#   scaling_speed: 0.25
+#   max_scaling_factor: 0.2
 
-TebLocalPlannerROS:
- footprint: [[0.2, 0.2], [-0.2, 0.2], [-0.2, -0.2], [0.2, -0.2], [0.3, 0]]
- odom_topic: /ABot/odom
- map_frame: /map
+# TebLocalPlannerROS:
+#  footprint: [[0.2, 0.2], [-0.2, 0.2], [-0.2, -0.2], [0.2, -0.2], [0.3, 0]]
+#  odom_topic: /ABot/odom
+#  map_frame: /map
     
- # Trajectory
+#  # Trajectory
   
- teb_autosize: True
- dt_ref: 0.4
- dt_hysteresis: 0.1
- global_plan_overwrite_orientation: True
- max_global_plan_lookahead_dist: 3.0
- feasibility_check_no_poses: 5
+#  teb_autosize: True
+#  dt_ref: 0.4
+#  dt_hysteresis: 0.1
+#  global_plan_overwrite_orientation: True
+#  max_global_plan_lookahead_dist: 3.0
+#  feasibility_check_no_poses: 5
     
- # Robot
+#  # Robot
 
- max_vel_x: 0.6
- max_vel_x_backwards: 0.4
- max_vel_theta: 0.4
- acc_lim_x: 0.5
- acc_lim_theta: 0.5
- min_turning_radius: 0.0
- footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
-   type: "polygon"
-   vertices: [[0.2, 0.2], [-0.2, 0.2], [-0.2, -0.2], [0.2, -0.2], [0.3, 0]] # for type "polygon"
+#  max_vel_x: 0.6
+#  max_vel_x_backwards: 0.4
+#  max_vel_theta: 0.4
+#  acc_lim_x: 0.5
+#  acc_lim_theta: 0.5
+#  min_turning_radius: 0.0
+#  footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
+#    type: "polygon"
+#    vertices: [[0.2, 0.2], [-0.2, 0.2], [-0.2, -0.2], [0.2, -0.2], [0.3, 0]] # for type "polygon"
 
- # GoalTolerance
+#  # GoalTolerance
     
- xy_goal_tolerance: 0.2
- yaw_goal_tolerance: 0.1
- free_goal_vel: False
+#  xy_goal_tolerance: 0.2
+#  yaw_goal_tolerance: 0.1
+#  free_goal_vel: False
     
- # Obstacles
+#  # Obstacles
 
- min_obstacle_dist: 0.1
- inflarion_dist: 0.6
- dynamic_obstacle_inflation_dist: 0.6
+#  min_obstacle_dist: 0.1
+#  inflarion_dist: 0.6
+#  dynamic_obstacle_inflation_dist: 0.6
 
- include_dynamic_obstacles: false
- include_costmap_obstacles: true
- legacy_obstacle_association: false
+#  include_dynamic_obstacles: false
+#  include_costmap_obstacles: true
+#  legacy_obstacle_association: false
 
- obstacle_association_force_inclution_factor: 1.5
- obstacle_association_cutoff_factor: 5.0
- costmap_obstacles_behind_robot_dist: 1.5
- obstacle_poses_affected: 30
+#  obstacle_association_force_inclution_factor: 1.5
+#  obstacle_association_cutoff_factor: 5.0
+#  costmap_obstacles_behind_robot_dist: 1.5
+#  obstacle_poses_affected: 30
  
 
-  #  costmap_converter_plugin: ""
-  #  costmap_converter_spin_thread: True
-  #  costmap_converter_rate: 1
+#   #  costmap_converter_plugin: ""
+#   #  costmap_converter_spin_thread: True
+#   #  costmap_converter_rate: 1
 
- # Optimization
+#  # Optimization
     
- no_inner_iterations: 5
- no_outer_iterations: 4
- optimization_activate: True
- optimization_verbose: False
- penalty_epsilon: 0.1
- weight_max_vel_x: 2
- weight_max_vel_theta: 1
- weight_acc_lim_x: 1
- weight_acc_lim_theta: 1
- weight_kinematics_nh: 1000
- weight_kinematics_forward_drive: 1
- weight_kinematics_turning_radius: 1
- weight_optimaltime: 1
- weight_obstacle: 50
- weight_dynamic_obstacle: 10 # not in use yet
- alternative_time_cost: False # not in use yet
+#  no_inner_iterations: 5
+#  no_outer_iterations: 4
+#  optimization_activate: True
+#  optimization_verbose: False
+#  penalty_epsilon: 0.1
+#  weight_max_vel_x: 2
+#  weight_max_vel_theta: 1
+#  weight_acc_lim_x: 1
+#  weight_acc_lim_theta: 1
+#  weight_kinematics_nh: 1000
+#  weight_kinematics_forward_drive: 1
+#  weight_kinematics_turning_radius: 1
+#  weight_optimaltime: 1
+#  weight_obstacle: 50
+#  weight_dynamic_obstacle: 10 # not in use yet
+#  alternative_time_cost: False # not in use yet
 
- # Homotopy Class Planner
+#  # Homotopy Class Planner
 
- enable_homotopy_class_planning: True
- enable_multithreading: True
- simple_exploration: False
- max_number_classes: 4
- roadmap_graph_no_samples: 15
- roadmap_graph_area_width: 5
- h_signature_prescaler: 0.5
- h_signature_threshold: 0.1
- obstacle_keypoint_offset: 0.1
- obstacle_heading_threshold: 0.45
- visualize_hc_graph: False
+#  enable_homotopy_class_planning: True
+#  enable_multithreading: True
+#  simple_exploration: False
+#  max_number_classes: 4
+#  roadmap_graph_no_samples: 15
+#  roadmap_graph_area_width: 5
+#  h_signature_prescaler: 0.5
+#  h_signature_threshold: 0.1
+#  obstacle_keypoint_offset: 0.1
+#  obstacle_heading_threshold: 0.45
+#  visualize_hc_graph: False
