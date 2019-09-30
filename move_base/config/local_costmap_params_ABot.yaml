@@ -1,18 +1,19 @@
-global_frame: map
-robot_base_frame: base_link
-update_frequency: 5.0
-publish_frequency: 2.0
-static_map: true
-rolling_window: true
-resolution: 0.025
-allow_unknown: true
-width value: 10
-height: 10
+local_costmap:
+  global_frame: map
+  robot_base_frame: base_link
+  update_frequency: 5.0
+  publish_frequency: 2.0
+  static_map: false
+  rolling_window: true
+  resolution: 0.025
+  allow_unknown: true
+  width value: 4.0
+  height: 4.0
 
-#inflation:
-#    inflation_radius: 0.2
+  #inflation:
+  #    inflation_radius: 0.2
 
-plugins:
-  - {name: obstacles_laser,           type: "costmap_2d::ObstacleLayer"}
-  - {name: inflation,                 type: "costmap_2d::InflationLayer"}
+  plugins:
+    - {name: obstacles_laser,           type: "costmap_2d::ObstacleLayer"}
+    - {name: inflation,                 type: "costmap_2d::InflationLayer"}
 
