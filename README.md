@@ -23,6 +23,14 @@ For a simulation with move_base controller use:
 roslaunch move_base_slam.launch
 ```
 
+For autonomous exploration use:
+
+
+```
+roslaunch lite_exploration.launch
+```
+
+
 ## Dependencies
 The following dependencies are required:
 * python 3.X
