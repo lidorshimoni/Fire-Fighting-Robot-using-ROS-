@@ -2,8 +2,8 @@
 
 <launch>
 
-<include file="$(find Fire_Fighting_Robot)/launch/ABot.launch" />
+<include file="$(find fire_fighting_robot)/launch/ABot.launch" />
 
-<include file="$(find Fire_Fighting_Robot)/launch/joystick.launch" />
+<include file="$(find fire_fighting_robot)/launch/joystick.launch" />
 
 </launch>

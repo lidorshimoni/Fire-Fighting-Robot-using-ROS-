@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>Fire_Fighting_Robot</name>
+  <name>fire_fighting_robot</name>
   <version>0.0.0</version>
   <description>Robot that helps fire fighters find humans that are trapped in a building, and mappes the surrounding and identify fire </description>
 

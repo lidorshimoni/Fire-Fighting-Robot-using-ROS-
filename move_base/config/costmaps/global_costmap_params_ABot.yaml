@@ -15,6 +15,6 @@ global_costmap:
   #    inflation_radius: 0.25
 
   plugins:
-  #  - {name: obstacles_laser,           type: "costmap_2d::ObstacleLayer"}
+    - {name: obstacles_laser,           type: "costmap_2d::ObstacleLayer"}
     - {name: static,                  type: "costmap_2d::StaticLayer"}
     - {name: inflation_global,               type: "costmap_2d::InflationLayer"}

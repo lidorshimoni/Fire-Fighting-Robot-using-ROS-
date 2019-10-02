@@ -22,21 +22,21 @@
 <!-- load config files -->
 
   <!-- meutual costmaps configs  -->
-    <rosparam file="$(find Fire_Fighting_Robot)/move_base/config/costmap_common_params_ABot.yaml" command="load" ns="global_costmap"/>
-    <rosparam file="$(find Fire_Fighting_Robot)/move_base/config/costmap_common_params_ABot.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find fire_fighting_robot)/move_base/config/costmaps/costmap_common_params_ABot.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find fire_fighting_robot)/move_base/config/costmaps/costmap_common_params_ABot.yaml" command="load" ns="local_costmap"/>
 
   <!-- global costmap config -->
-    <rosparam file="$(find Fire_Fighting_Robot)/move_base/config/global_costmap_params_ABot.yaml" command="load" />
+    <rosparam file="$(find fire_fighting_robot)/move_base/config/costmaps/global_costmap_params_ABot.yaml" command="load" />
 
   <!-- local costmap config -->
-    <rosparam file="$(find Fire_Fighting_Robot)/move_base/config/local_costmap_params_ABot.yaml" command="load" />
+    <rosparam file="$(find fire_fighting_robot)/move_base/config/costmaps/local_costmap_params_ABot.yaml" command="load" />
 
   <!-- planners params -->
-    <rosparam file="$(find Fire_Fighting_Robot)/move_base/config/DWA_local_planner_params.yaml" command="load" />
-    <rosparam file="$(find Fire_Fighting_Robot)/move_base/config/global_planner_params.yaml" command="load" />
+    <rosparam file="$(find fire_fighting_robot)/move_base/config/planners/DWA_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find fire_fighting_robot)/move_base/config/planners/global_planner_params.yaml" command="load" />
 
   <!-- move_base params -->
-    <rosparam file="$(find Fire_Fighting_Robot)/move_base/config/move_base_params_ABot.yaml" command="load" />
+    <rosparam file="$(find fire_fighting_robot)/move_base/config/move_base_params_ABot.yaml" command="load" />
 
     <param name="local_costmap/width" value="4"/>
     <param name="local_costmap/height" value="4"/>

@@ -2,8 +2,8 @@
 
 <launch>
 
-<include file="$(find Fire_Fighting_Robot)/launch/Utilities/empty_world.launch" >
-  <arg name="world_name" value="$(find Fire_Fighting_Robot)/maps/model.world"/>
+<include file="$(find fire_fighting_robot)/launch/Utilities/empty_world.launch" >
+  <arg name="world_name" value="$(find fire_fighting_robot)/maps/model.world"/>
 </include>
 
 </launch>
