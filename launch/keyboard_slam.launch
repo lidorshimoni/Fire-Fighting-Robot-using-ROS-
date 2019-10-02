@@ -3,10 +3,10 @@
 <launch>
 
 
-<include file="$(find Fire_Fighting_Robot)/launch/Utilities/ABot.launch" />
+<include file="$(find fire_fighting_robot)/launch/Utilities/ABot.launch" />
 
 <!-- Use Keyboard Control-->
-<node pkg="Fire_Fighting_Robot" name="keyboard" type="keyboard_controler_new.py" output="screen" />
+<node pkg="fire_fighting_robot" name="keyboard" type="keyboard_controler_new.py" output="screen" />
 
 
 <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">

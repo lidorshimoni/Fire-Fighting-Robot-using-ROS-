@@ -186,7 +186,7 @@ Visualization Manager:
       Shape: Arrow (Flat)
       Topic: /move_base/TebLocalPlannerROS/teb_poses
       Unreliable: false
-      Value: true
+      Value: false
     - Class: rviz/Camera
       Enabled: true
       Image Rendering: background and overlay

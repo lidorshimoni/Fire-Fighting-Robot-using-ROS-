@@ -2,13 +2,13 @@
 <launch>
 
 <!-- Launch ABot -->
-<include file="$(find Fire_Fighting_Robot)/launch/Utilities/ABot.launch" />
+<include file="$(find fire_fighting_robot)/launch/Utilities/ABot.launch" />
 
 <!-- Use move base Control-->
-<include file="$(find Fire_Fighting_Robot)/move_base/move_base.launch"/>
+<include file="$(find fire_fighting_robot)/move_base/move_base.launch"/>
 
 <!-- Launch Rviz with config file -->
-<node type="rviz" name="rviz" pkg="rviz" args="-d $(find Fire_Fighting_Robot)/rviz/move_base_basic_view.rviz" />
+<node type="rviz" name="rviz" pkg="rviz" args="-d $(find fire_fighting_robot)/rviz/move_base_basic_view.rviz" />
 
 <!-- Slam -->
 <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
