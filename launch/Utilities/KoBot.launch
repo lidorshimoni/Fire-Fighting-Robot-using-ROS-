@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+<include file="$(find fire_fighting_robot)/launch/Utilities/my_map.launch" />
+
+  <!-- send table urdf to param server -->
+  <param name="robot_description" command="$(find xacro)/xacro '$(find fire_fighting_robot)/urdf/KoBot.urdf.xacro'" />
+
+  <!-- push table_description to factory and spawn robot in gazebo -->
+  <node name="spawn_ABot" pkg="gazebo_ros" type="spawn_model" args="-urdf -model simple_model -param robot_description" respawn="false" output="screen" />
+  <!--<node pkg="tf" type="static_transform_publisher" name="map_odom_static_broadcaster" args="0 0 0 0 0 0 map /odom 100" /> -->
+  <node pkg="tf" type="static_transform_publisher" name="world_map_static_broadcaster" args="0 0 0 1.57 0 0 world /map 100" />
+
+<!--<node pkg="tf" type="static_transform_publisher" name="laser_static_broadcaster" args="0.225 0 0.2 0 0 0 /base_laser /base_link 5" />-->
+<node pkg="robot_state_publisher" name="publisher_state_pub" type="robot_state_publisher">
+</node>
+
+</launch>

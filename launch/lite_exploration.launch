@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 
-<!-- Launch ABot -->
-<include file="$(find fire_fighting_robot)/launch/Utilities/ABot.launch" />
+<!-- Launch robot -->
+<include file="$(find fire_fighting_robot)/launch/Utilities/KoBot.launch" />
 
 <!-- Use move base Control-->
 <include file="$(find fire_fighting_robot)/move_base/move_base.launch"/>

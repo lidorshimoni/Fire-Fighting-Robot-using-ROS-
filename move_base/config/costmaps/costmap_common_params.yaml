@@ -26,6 +26,6 @@ inflation:
 inflation_global:
     # inflation_radius: 0.2
     enabled: true
-    cost_scaling_factor:  5.0
+    cost_scaling_factor:  3.0
     inflation_radius:     0.5 
 
