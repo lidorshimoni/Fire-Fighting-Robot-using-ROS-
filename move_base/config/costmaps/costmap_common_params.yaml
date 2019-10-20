@@ -17,7 +17,7 @@ static:
 
 obstacles_laser:
     observation_sources: laser
-    laser: {sensor_frame: base_laser, data_type: LaserScan, clearing: true, marking: true, topic: ABot/scan, inf_is_valid: true}
+    laser: {sensor_frame: base_laser, data_type: LaserScan, clearing: true, marking: true, topic: Robot/scan, inf_is_valid: true}
 
 inflation:
     inflation_radius: 0.342

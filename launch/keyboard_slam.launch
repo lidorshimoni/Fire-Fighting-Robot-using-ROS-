@@ -3,7 +3,7 @@
 <launch>
 
 
-<include file="$(find fire_fighting_robot)/launch/Utilities/ABot.launch" />
+<include file="$(find fire_fighting_robot)/launch/Utilities/KoBot.launch" />
 
 <!-- Use Keyboard Control-->
 <node pkg="fire_fighting_robot" name="keyboard" type="keyboard_controler_new.py" output="screen" />
