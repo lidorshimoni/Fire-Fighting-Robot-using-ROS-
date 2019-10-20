@@ -29,7 +29,7 @@ DWAPlannerROS:
   # latch_xy_goal_tolerance: false
 
 # Forward Simulation Parameters
-  sim_time: 1.0       # 1.7
+  sim_time: 1.5       # 1.7
   vx_samples: 6       # 3
   vy_samples: 1       # diff drive robot, there is only one sample
   vtheta_samples: 20  # 20
@@ -41,7 +41,7 @@ DWAPlannerROS:
   forward_point_distance: 0.325 # 0.325  - how far along to place an additional scoring point
   stop_time_buffer: 0.2         # 0.2    - amount of time a robot must stop in before colliding for a valid traj.
   scaling_speed: 0.25           # 0.25   - absolute velocity at which to start scaling the robot's footprint
-  max_scaling_factor: 0.4       # 0.2    - how much to scale the robot's footprint when at speed.
+  max_scaling_factor: 0.3       # 0.2    - how much to scale the robot's footprint when at speed.
 
 # Oscillation Prevention Parameters
   oscillation_reset_dist: 0.05  # 0.05   - how far to travel before resetting oscillation flags
