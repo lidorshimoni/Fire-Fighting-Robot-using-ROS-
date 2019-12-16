@@ -345,13 +345,14 @@
     <updateRate>10</updateRate>
     <leftJoint>base_link_right_wheel</leftJoint>
     <rightJoint>base_link_left_wheel</rightJoint>
+    <legacyMode>True</legacyMode>
     <wheelSeparation>0.325</wheelSeparation>
     <wheelDiameter>0.15</wheelDiameter>
     <torque>1.41</torque>
     <commandTopic>cmd_vel</commandTopic>
     <odometryTopic>odom</odometryTopic>
     <odometryFrame>odom</odometryFrame>
-    <robotBaseFrame>base_linsk</robotBaseFrame>
+    <robotBaseFrame>base_link</robotBaseFrame>
     <publishWheelJointState>true</publishWheelJointState>
   </plugin>
 </gazebo>

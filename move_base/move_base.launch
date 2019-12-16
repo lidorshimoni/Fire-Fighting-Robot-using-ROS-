@@ -22,14 +22,14 @@
 <!-- load config files -->
 
   <!-- meutual costmaps configs  -->
-    <rosparam file="$(find fire_fighting_robot)/move_base/config/costmaps/costmap_common_params.yaml" command="load" ns="global_costmap"/>
-    <rosparam file="$(find fire_fighting_robot)/move_base/config/costmaps/costmap_common_params.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find fire_fighting_robot)/move_base/config/temp2/costmap_common_params.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find fire_fighting_robot)/move_base/config/temp2/costmap_common_params.yaml" command="load" ns="local_costmap"/>
 
   <!-- global costmap config -->
-    <rosparam file="$(find fire_fighting_robot)/move_base/config/costmaps/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find fire_fighting_robot)/move_base/config/temp2/global_costmap_params.yaml" command="load" />
 
   <!-- local costmap config -->
-    <rosparam file="$(find fire_fighting_robot)/move_base/config/costmaps/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find fire_fighting_robot)/move_base/config/temp2/local_costmap_params.yaml" command="load" />
 
   <!-- planners params -->
     <rosparam file="$(find fire_fighting_robot)/move_base/config/planners/DWA_local_planner_params.yaml" command="load" />
