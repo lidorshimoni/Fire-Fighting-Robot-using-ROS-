@@ -11,7 +11,10 @@
 <include file="$(find explore_lite)/launch/explore.launch"/>
 
 <!-- Launch Rviz with config file -->
-<node type="rviz" name="rviz" pkg="rviz" args="-d $(find fire_fighting_robot)/rviz/move_base_basic_view.rviz" />
+<include file="$(find fire_fighting_robot)/launch/Utilities/rviz.launch"/>
+
+<!-- Camera output -->
+<node pkg="fire_fighting_robot" name="camera_output" type="Camera.py" output="screen" />
 
 <!-- Slam -->
 <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
@@ -45,10 +48,9 @@
 <param name="map_update_angle_thresh" value="0.12" />
 
 <!-- Debug parameters -->
-    <!--
-    <param name="pub_drawings" value="true"/>
-    <param name="pub_debug_output" value="true"/>
-    -->
+<param name="pub_drawings" value="true"/>
+<param name="pub_debug_output" value="true"/>
+   
 </node>
 
 

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- <param name="robot_description" textfile="$(find fire_fighting_robot)/urdf/KoBot.urdf.xacro" />  -->
+    <!-- <param name="robot_description" command="$(find xacro)/xacro.py $(find fire_fighting_robot)/urdf/KoBot.urdf.xacro" />  -->
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find fire_fighting_robot)/rviz/move_base_basic_view.rviz" />
+
+    <arg name="map_file" default="$(find fire_fighting_robot)maps/map.yaml"/>
+
+    <!-- Run the map server -->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" >
+        <remap from="map" to="world"/>
+        <remap from="map_metadata" to="saved_map_metadata"/>
+    </node>
+
+</launch>
