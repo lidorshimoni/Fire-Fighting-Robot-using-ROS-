@@ -25,7 +25,7 @@ def img_callback (ros_img):
 
 bridge = CvBridge()
 
-rospy.init_node('img', anonymous = True)
+rospy.init_node('detect', anonymous = True)
 img_sub = rospy.Subscriber('camera/image_raw/', Image, img_callback)
 ros_img = rospy.wait_for_message('camera/image_raw/', Image)
 
@@ -35,7 +35,7 @@ while not rospy.is_shutdown():
     height = img.shape[0]
     width = img.shape[1]
     cv2.imshow('Scanning for fire', img)
-    
+
 
     
     if cv2.waitKey(1) == 27: 
