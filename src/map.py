@@ -12,7 +12,6 @@ from matplotlib import pyplot as plt
 from PIL import Image
 import time
 
-# TODO get pose and combine with map 
 
 map = 0
 robot_x = 0
@@ -34,6 +33,20 @@ def map_img_callback (ros_img):
     map = np.rot90(map)
     
     
+def quaternion_to_euler(q):
+
+    t0 = +2.0 * (q.w * q.x + q.y * q.z)
+    t1 = +1.0 - 2.0 * (q.x * q.x + q.y * q.y)
+    roll = math.atan2(t0, t1)
+    t2 = +2.0 * (q.w * q.y - q.z * q.x)
+    t2 = +1.0 if t2 > +1.0 else t2
+    t2 = -1.0 if t2 < -1.0 else t2
+    pitch = math.asin(t2)
+    t3 = +2.0 * (q.w * q.z + q.x * q.y)
+    t4 = +1.0 - 2.0 * (q.y * q.y + q.z * q.z)
+    yaw = math.atan2(t3, t4)
+    return [yaw, pitch, roll]
+
 def pose_callback (ros_img):
     # print ('got pose')
     global robot_theta
@@ -42,7 +55,7 @@ def pose_callback (ros_img):
     pose = ros_img
     robot_x = -int(round(pose.pose.position.y * 10, 1))
     robot_y = -int(round(pose.pose.position.x * 10, 1))
-    robot_theta = abs((pose.pose.orientation.z))    
+    robot_theta = -(quaternion_to_euler(pose.pose.orientation)[0]+np.pi/2)  
 
 
 rospy.init_node('map_img', anonymous = True)
@@ -62,20 +75,21 @@ while not rospy.is_shutdown():
     img = map.astype(np.uint8)
     # img = cv2.resize(img, dsize=(1024, 1024), interpolation=cv2.INTER_NEAREST)
 
+
+    # make RGB - beutify
     img[img==-1] = 255
     img[img==0] = 180
     img[img<180] = 0
-
     img = cv2.cvtColor(img,cv2.COLOR_GRAY2RGB)
-    
-    # print("*"*20+ "\n", (np.tan(robot_theta).as_integer_ratio()[1])*5)
-    # print((np.tan(robot_theta).as_integer_ratio()[0])*5)
-    # print((np.tan(robot_theta).as_integer_ratio()[1])*5)
-    # print((np.tan(robot_theta).as_integer_ratio()[0])*5)
-    # image = cv2.arrowedLine(img, (512+robot_x, 512+robot_y), (512+robot_x+int(np.tan(robot_theta).as_integer_ratio()[1])*10, 512+robot_y+int(np.tan(robot_theta).as_integer_ratio()[0])*10), [255,0,0], 2)
 
-    # img = cv2.arrowedLine(img, (512+robot_x, 512+robot_y), (int(512+robot_x+ (10*np.cos(robot_theta))), int(512+robot_y+ (10*np.sin(robot_theta)))), [0,0,255], 2)
-    img = cv2.circle(img, (512+robot_x,512+robot_y), 2, [250,0,0], 1)
+
+    # draw robot pos
+    circle_r = 2
+    arrow_l = 10
+    img = cv2.arrowedLine(img, (512+robot_x, 512+robot_y), (int(512+robot_x+ (arrow_l*np.cos(robot_theta))), int(512+robot_y+ (arrow_l*np.sin(robot_theta)))), [0,0,255], 1)
+    img = cv2.circle(img, (512+robot_x,512+robot_y), circle_r, [250,0,0], 1)
+
+    # show map
     cv2.imshow('Getting map', img)
 
     
