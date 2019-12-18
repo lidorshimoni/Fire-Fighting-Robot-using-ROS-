@@ -10,9 +10,9 @@ By [Lidor Shimoni](https://github.com/lidorshimoni), [Daniel Angel](https://gith
 ## Example
 ![Image from simulation](else/simulation_image.png?raw=true "Image from simulation")
 
-![Costmap Visualization](else/rviz_costmap_image.png?raw=true "Costmap Visualization"|width=100)
+![Costmap Visualization](else/rviz_costmap_image.png?raw=true "Costmap Visualization"=250x250)
 
-![simulation workspace](else/gazebo_image.png?raw=true "simulation workspace"|width=100)
+![simulation workspace](else/gazebo_image.png?raw=true "simulation workspace"=250x250)
 
 
 ## Running in simulation
