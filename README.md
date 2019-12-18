@@ -10,6 +10,11 @@ By [Lidor Shimoni](https://github.com/lidorshimoni), [Daniel Angel](https://gith
 ## Example
 ![Image from simulation](else/simulation_image.png?raw=true "Image from simulation")
 
+![Costmap Visualization](else/rviz_costmap_image.png?raw=true "Costmap Visualization")
+
+![simulation workspace](else/gazebo_image.png?raw=true "simulation workspace")
+
+
 ## Running in simulation
 For a simulation with joystick controller use:
 
