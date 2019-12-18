@@ -236,6 +236,8 @@
 
   <gazebo reference="right_back_wheel">
     <material>Gazebo/Black</material>
+    <mu1> 0.0 </mu1>
+    <mu2>0.0</mu2>
   </gazebo>
 
   <joint name="base_link_right_back_wheel" type="continuous">
@@ -278,6 +280,8 @@
 
   <gazebo reference="left_back_wheel">
     <material>Gazebo/Black</material>
+    <mu1> 0.0 </mu1>
+    <mu2>0.0</mu2>
   </gazebo>
 
   <joint name="base_link_left_back_wheel" type="continuous">
