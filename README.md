@@ -8,11 +8,12 @@ By [Lidor Shimoni](https://github.com/lidorshimoni), [Daniel Angel](https://gith
 [![Watch the video](https://img.youtube.com/vi/CvRHvVOhvw0/default.jpg)](https://youtu.be/CvRHvVOhvw0) -->
 
 ## Example
-![Image from simulation](else/simulation_image.png?raw=true "Image from simulation")
+![Image from simulation](else/simulation_image.png "Image from simulation")
 
-![Costmap Visualization](else/rviz_costmap_image.png?raw=true "Costmap Visualization")
+<!--![Costmap Visualization](else/rviz_costmap_image.png | width=100 ) -->
 
-![simulation workspace](else/gazebo_image.png?raw=true "simulation workspace")
+<!--![simulation workspace](else/gazebo_image.png =250x250)-->
+
 
 
 ## Running in simulation
