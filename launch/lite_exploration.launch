@@ -17,7 +17,7 @@
 <node pkg="fire_fighting_robot" name="detect" type="Camera.py" output="screen" />
 
 <!-- map output -->
-<!-- <node pkg="fire_fighting_robot" name="map_img" type="map.py" output="screen" /> -->
+<node pkg="fire_fighting_robot" name="map_img" type="map.py" output="screen" />
 
 <!-- Slam -->
 <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
