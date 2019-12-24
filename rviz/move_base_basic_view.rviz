@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /MarkerArray1/Namespaces1
       Splitter Ratio: 0.680555582
     Tree Height: 775
   - Class: rviz/Selection
@@ -209,6 +210,7 @@ Visualization Manager:
       Visibility:
         Grid: true
         Map: true
+        MarkerArray: true
         PointCloud: true
         Value: true
         footprint: true
@@ -220,6 +222,14 @@ Visualization Manager:
         steps: true
         world: true
       Zoom Factor: 1
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /explore/frontiers
+      Name: MarkerArray
+      Namespaces:
+        frontiers: true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 161; 159; 159

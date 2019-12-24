@@ -45,17 +45,17 @@ while not rospy.is_shutdown():
     width = img.shape[1]
     font                   = cv2.FONT_HERSHEY_SIMPLEX
     fontScale              = 0.5
-    fontColor              = (255,0,0)
+    fontColor              = (0,0,255)
     lineType               = 2
 
-    cv2.putText(img,'linear: ' + str(round(robot_vel.linear.x, 2)), 
+    cv2.putText(img,'linear: ' + str(round(robot_vel.linear.x, 2)*3.6), 
     (10,20), 
     font, 
     fontScale,
     fontColor,
     lineType)
 
-    cv2.putText(img,"angular: " + str(round(robot_vel.angular.z, 2)), 
+    cv2.putText(img,"angular: " + str(round(robot_vel.angular.z, 2)*3.6), 
     (10,35), 
     font, 
     fontScale,

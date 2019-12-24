@@ -10,7 +10,7 @@ class MapClientLaserScanSubscriber(object):
 
     def __init__(self):
         rospy.Subscriber('/scan',LaserScan,self.get_scan)
-        print 'Debug scan'
+        # print 'Debug scan'
         self.z = rospy.wait_for_message("/scan",LaserScan)
         #print self.z
 

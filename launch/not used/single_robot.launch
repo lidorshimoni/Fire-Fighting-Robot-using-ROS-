@@ -20,8 +20,8 @@
 <!-- Map size / start point -->
 <param name="map_resolution" value="0.10"/>
 <param name="map_size" value="1024"/>
-<param name="map_start_x" value="0.5"/>
-<param name="map_start_y" value="0.5" />
+<param name="map_start_x" value="0.0"/>
+<param name="map_start_y" value="0.0" />
 <param name="map_multi_res_levels" value="1" />
 
 <!-- Map update parameters -->
@@ -31,10 +31,10 @@
 <param name="map_update_angle_thresh" value="0.12" />
 
 <!-- Debug parameters -->
-<!--
-<param name="pub_drawings" value="true"/>
-<param name="pub_debug_output" value="true"/>
--->
+
+<param name="pub_drawings" value="false"/>
+<param name="pub_debug_output" value="false"/>
+
 </node>
 
 
