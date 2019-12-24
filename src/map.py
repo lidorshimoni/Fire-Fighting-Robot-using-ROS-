@@ -17,6 +17,8 @@ map = 0
 robot_x = 0
 robot_y = 0
 robot_theta = 0
+resolution = 1024
+middle = resolution/2
 
 def crop_image(img,tol=0):
     # img is 2D image data
@@ -53,8 +55,8 @@ def pose_callback (ros_img):
     global robot_x
     global robot_y
     pose = ros_img
-    robot_x = -int(round(pose.pose.position.y * 10, 1))
-    robot_y = -int(round(pose.pose.position.x * 10, 1))
+    robot_x = -int(round(pose.pose.position.y * 10, 1)) + middle
+    robot_y = -int(round(pose.pose.position.x * 10, 1)) + middle
     robot_theta = -(quaternion_to_euler(pose.pose.orientation)[0]+np.pi/2)  
 
 
@@ -70,6 +72,31 @@ ros_pose = rospy.wait_for_message('/slam_out_pose', PoseStamped)
 
 np.set_printoptions(threshold=np.inf)
 
+def draw_field_view(map):
+    # for x in range(resolution):
+    #     for y in range(resolution):
+    #         if map[x][y] == 180:
+    #             if 1/np.tan(y-robot_y/x-robot_x) > robot_theta - 1.0472 and 1/np.tan(y-robot_y/x-robot_x) < robot_theta + 1.0472:
+    #                 map[x][y] = 100
+    
+    overlay = map.copy()
+    arrow_l = 10
+    pt1 = (robot_x, robot_y)
+    pt2 = (int(robot_x+ (arrow_l*10*np.cos(robot_theta-1.0472))), int(robot_y+ (arrow_l*10*np.sin(robot_theta-1.0472))))
+    pt3 = (int(robot_x+ (arrow_l*10*np.cos(robot_theta+1.0472))), int(robot_y+ (arrow_l*10*np.sin(robot_theta+1.0472))))
+    triangle_cnt = np.array( [pt1, pt2, pt3] )
+
+    cv2.drawContours(map, [triangle_cnt], 0, (0,255,0, 1), -1)
+
+
+    alpha = 0.4  # Transparency factor.
+
+    # Following line overlays transparent rectangle over the image
+    map = cv2.addWeighted(overlay, alpha, map, 1 - alpha, 0)
+
+    return map
+
+
 while not rospy.is_shutdown():
     # img = crop_image(map, -1).astype(np.uint8)
     img = map.astype(np.uint8)
@@ -81,13 +108,19 @@ while not rospy.is_shutdown():
     img[img==0] = 180
     img[img<180] = 0
     img = cv2.cvtColor(img,cv2.COLOR_GRAY2RGB)
+    img = draw_field_view(img)
+
+
 
 
     # draw robot pos
     circle_r = 2
     arrow_l = 10
-    img = cv2.arrowedLine(img, (512+robot_x, 512+robot_y), (int(512+robot_x+ (arrow_l*np.cos(robot_theta))), int(512+robot_y+ (arrow_l*np.sin(robot_theta)))), [0,0,255], 1)
-    img = cv2.circle(img, (512+robot_x,512+robot_y), circle_r, [250,0,0], 1)
+    img = cv2.arrowedLine(img, (robot_x, robot_y), (int(robot_x+ (arrow_l*np.cos(robot_theta))), int(robot_y+ (arrow_l*np.sin(robot_theta)))), [255,0,0], 1)
+    img = cv2.circle(img, (robot_x,robot_y), circle_r, [250,0,0], 1)
+
+    # img = cv2.arrowedLine(img, (robot_x, robot_y), (int(robot_x+ (arrow_l*10*np.cos(robot_theta+1.0472))), int(robot_y+ (arrow_l*10*np.sin(robot_theta+1.0472)))), [0,0,255], 1)
+    # img = cv2.arrowedLine(img, (robot_x, robot_y), (int(robot_x+ (arrow_l*10*np.cos(robot_theta-1.0472))), int(robot_y+ (arrow_l*10*np.sin(robot_theta-1.0472)))), [0,0,255], 1)
 
     # show map
     cv2.imshow('Getting map', img)
