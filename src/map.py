@@ -49,12 +49,11 @@ def quaternion_to_euler(q):
     yaw = math.atan2(t3, t4)
     return [yaw, pitch, roll]
 
-def pose_callback (ros_img):
+def pose_callback (pose):
     # print ('got pose')
     global robot_theta
     global robot_x
     global robot_y
-    pose = ros_img
     robot_x = -int(round(pose.pose.position.y * 10, 1)) + middle
     robot_y = -int(round(pose.pose.position.x * 10, 1)) + middle
     robot_theta = -(quaternion_to_euler(pose.pose.orientation)[0]+np.pi/2)  
@@ -73,12 +72,7 @@ ros_pose = rospy.wait_for_message('/slam_out_pose', PoseStamped)
 np.set_printoptions(threshold=np.inf)
 
 def draw_field_view(map):
-    # for x in range(resolution):
-    #     for y in range(resolution):
-    #         if map[x][y] == 180:
-    #             if 1/np.tan(y-robot_y/x-robot_x) > robot_theta - 1.0472 and 1/np.tan(y-robot_y/x-robot_x) < robot_theta + 1.0472:
-    #                 map[x][y] = 100
-    
+
     overlay = map.copy()
     arrow_l = 10
     pt1 = (robot_x, robot_y)
@@ -109,6 +103,9 @@ while not rospy.is_shutdown():
     img[img<180] = 0
     img = cv2.cvtColor(img,cv2.COLOR_GRAY2RGB)
     img = draw_field_view(img)
+
+    color = [20,150,20]
+    # img[img==color] =
 
 
 
