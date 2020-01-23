@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-
+<!-- removethsiline -->
 <!-- Launch robot -->
 <include file="$(find fire_fighting_robot)/launch/Utilities/KoBot.launch" />
 
@@ -11,7 +11,6 @@
 <include file="$(find explore_lite)/launch/explore.launch"/>
 
 <!-- Launch Rviz with config file -->
-<include file="$(find fire_fighting_robot)/launch/Utilities/rviz.launch"/>
 
 <!-- Camera output -->
 <node pkg="fire_fighting_robot" name="detect" type="Camera.py" output="screen" />
