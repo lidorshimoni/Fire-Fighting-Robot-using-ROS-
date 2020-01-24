@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="rviz_file1" default="$(find SLAM)/rviz/ABot_mcl.rviz" />
-  <arg name="rviz_file2" default="$(find SLAM)/rviz/KoBot2_mcl.rviz" />
+  <arg name="rviz_file1" default="$(find fire_fighting_robot)/rviz/ABot_mcl.rviz" />
+  <arg name="rviz_file2" default="$(find fire_fighting_robot)/rviz/KoBot2_mcl.rviz" />
 
   <node pkg="rviz" type="rviz" name="rviz_ABot" args="-d $(arg rviz_file1)" output="screen"/>
   <node pkg="rviz" type="rviz" name="rviz_KoBot" args="-d $(arg rviz_file2)" output="screen"/>

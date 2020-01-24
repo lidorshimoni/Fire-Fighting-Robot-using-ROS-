@@ -2,8 +2,8 @@
 <launch>
 
   
-<include file="$(find SLAM)/launch/rviz_visualisation_mcl.launch"/>
-<include file="$(find SLAM)/launch/my_map.launch" />
+<include file="$(find fire_fighting_robot)/launch/not used/rviz_visualisation_mcl.launch"/>
+<include file="$(find fire_fighting_robot)/launch/Utilities/my_map.launch" />
 
 <!--#############################################################-->
 <group ns="ABot1">
@@ -15,7 +15,7 @@
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
   </node>
-<param name="robot_description1" command="$(find xacro)/xacro '$(find SLAM)/urdf/ABot.urdf.xacro'" />
+<param name="robot_description1" command="$(find xacro)/xacro '$(find fire_fighting_robot)/urdf/ABot.urdf.xacro'" />
   <!-- push ABot_description to factory and spawn robot in gazebo -->
   <node name="spawn_ABot" pkg="gazebo_ros" type="spawn_model" args=" -x -5 -y -2 -urdf -model ABot1 -param robot_description1" respawn="false" output="screen" />
 
@@ -24,7 +24,7 @@
   <param name="dev" value="/dev/input/js0" />
   <remap from="/joy" to="/ABot/joy"/>
   </node>
-  <node name="joystick_controler_ABot" pkg="SLAM" type="joystick_controler_new.py" output="screen">
+  <node name="joystick_controler_ABot" pkg="fire_fighting_robot" type="joystick_controler_new.py" output="screen">
   <remap from="/cmd_vel" to="/ABot1/cmd_vel"/>
   <remap from="/joy" to="/ABot1/joy"/>
   </node>
@@ -78,7 +78,7 @@
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
   </node>
-<param name="robot_description2" command="$(find xacro)/xacro '$(find SLAM)/urdf/ABot.urdf.xacro'" />
+<param name="robot_description2" command="$(find xacro)/xacro '$(find fire_fighting_robot)/urdf/ABot.urdf.xacro'" />
   <!-- push ABot_description to factory and spawn robot in gazebo -->
   <node name="spawn_ABot" pkg="gazebo_ros" type="spawn_model" args=" -x 7 -y -2 -Y 1.5 -urdf -model ABot2 -param robot_description2" respawn="false" output="screen" />
 
@@ -87,7 +87,7 @@
   <param name="dev" value="/dev/input/js1" />
   <remap from="/joy" to="/ABot2/joy"/>
   </node>
-  <node name="joystick_controler_ABot" pkg="SLAM" type="joystick_controler_new.py" output="screen">
+  <node name="joystick_controler_ABot" pkg="fire_fighting_robot" type="joystick_controler_new.py" output="screen">
   <remap from="/cmd_vel" to="/ABot2/cmd_vel"/>
   <remap from="/joy" to="/ABot2/joy"/>
   </node>
