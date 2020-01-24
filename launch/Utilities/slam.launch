@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <launch>
 
-<include file="$(find SLAM)/launch/Utilities/KoBot.launch" />
+<include file="$(find fire_fighting_robot)/launch/Utilities/KoBot.launch" />
 
-  <node name="slam" pkg="SLAM" type="ParticleFilterRB2.py" output="screen">
+  <node name="slam" pkg="fire_fighting_robot" type="ParticleFilterRB2.py" output="screen">
   <param name="laser_frame" type="string" value="base_laser"/>
   </node>
 
