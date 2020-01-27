@@ -32,15 +32,19 @@ def robot_vel_callback(twist):
 bridge = CvBridge()
 
 rospy.init_node('detect', anonymous = True)
-img_sub = rospy.Subscriber('camera/image_raw/', Image, img_callback)
-ros_img = rospy.wait_for_message('camera/image_raw/', Image)
+# img_sub = rospy.Subscriber('camera/image_raw/', Image, img_callback)
+img_sub = rospy.Subscriber('detection/object/detection_visualization/', Image, img_callback)
+
+
+# ros_img = rospy.wait_for_message('camera/image_raw/', Image)
+ros_img = rospy.wait_for_message('detection/object/detection_visualization/', Image)
 
 img_sub = rospy.Subscriber('/cmd_vel', Twist, robot_vel_callback)
 ros_img = rospy.wait_for_message('/cmd_vel', Twist)
 
 while not rospy.is_shutdown():
     img = cv_img
-    img = cv2.resize(img, (300, 300),interpolation = cv2.INTER_AREA) # for later fire detection
+    # img = cv2.resize(img, (300, 300),interpolation = cv2.INTER_AREA) # for later fire detection
     height = img.shape[0]
     width = img.shape[1]
     font                   = cv2.FONT_HERSHEY_SIMPLEX

@@ -1,6 +1,15 @@
 <?xml version="1.0"?>
 <launch>
-<!-- removethsiline -->
+
+<!-- Spawn bicycle -->
+<!-- <include file = "$(find fire_fighting_robot)/launch/Utilities/spawn_bicycle.launch">
+    <arg name = "x" value="2.0"/>
+    <arg name = "y" value = "0.0"/>
+    <arg name = "z" value ="0.0"/>
+
+    <arg name = "robot_name" value = "bicycle"/>
+</include> -->
+
 <!-- Launch robot -->
 <include file="$(find fire_fighting_robot)/launch/Utilities/KoBot.launch" />
 
@@ -13,7 +22,10 @@
 <!-- Launch Rviz with config file -->
 <include file="$(find fire_fighting_robot)/launch/Utilities/rviz.launch"/>
 
-<!-- Camera output -->
+<!-- Launch object detection node -->
+<include file="$(find fire_fighting_robot)/launch/Utilities/object_detection.launch"/>
+
+<!--Camera output -->
 <node pkg="fire_fighting_robot" name="detect" type="Camera.py" output="screen" />
 
 <!-- map output -->
