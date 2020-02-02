@@ -2,3 +2,5 @@
 build/
 
 .vscode/
+
+yolov3-keras.h5
