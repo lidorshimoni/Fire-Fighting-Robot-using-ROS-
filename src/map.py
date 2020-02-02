@@ -71,15 +71,31 @@ ros_pose = rospy.wait_for_message('/slam_out_pose', PoseStamped)
 
 np.set_printoptions(threshold=np.inf)
 
+arrow_l = 10
+
+def find_wall(map):
+    pt2 = pt3 = None
+    for distance in range(1,arrow_l*10):
+        if pt2 is None and map[int(robot_x+ (distance*np.cos(robot_theta-1.0472))), int(robot_y+ (distance*np.sin(robot_theta-1.0472))),0] == 0:
+            pt2 = int(robot_x+ (distance*np.cos(robot_theta-1.0472))), int(robot_y+ (distance*np.sin(robot_theta-1.0472)))
+        if pt3 is None and map[int(robot_x+ (distance*np.cos(robot_theta+1.0472))), int(robot_y+ (distance*np.sin(robot_theta+1.0472))), 0] == 0:
+            pt3 = int(robot_x+ (distance*np.cos(robot_theta+1.0472))), int(robot_y+ (distance*np.sin(robot_theta+1.0472)))
+    if not pt2:
+        pt2 = (int(robot_x+ (arrow_l*10*np.cos(robot_theta-1.0472))), int(robot_y+ (arrow_l*10*np.sin(robot_theta-1.0472))))
+    if not pt3:
+        pt3 = (int(robot_x+ (arrow_l*10*np.cos(robot_theta+1.0472))), int(robot_y+ (arrow_l*10*np.sin(robot_theta+1.0472))))
+    return (pt2, pt3)
+        
+
+
+
 def draw_field_view(map):
 
     overlay = map.copy()
-    arrow_l = 10
     pt1 = (robot_x, robot_y)
-    pt2 = (int(robot_x+ (arrow_l*10*np.cos(robot_theta-1.0472))), int(robot_y+ (arrow_l*10*np.sin(robot_theta-1.0472))))
-    pt3 = (int(robot_x+ (arrow_l*10*np.cos(robot_theta+1.0472))), int(robot_y+ (arrow_l*10*np.sin(robot_theta+1.0472))))
+    (pt2, pt3) = find_wall(map)
+    
     triangle_cnt = np.array( [pt1, pt2, pt3] )
-
     cv2.drawContours(map, [triangle_cnt], 0, (0,255,0, 1), -1)
 
 
@@ -102,7 +118,7 @@ while not rospy.is_shutdown():
     img[img==0] = 180
     img[img<180] = 0
     img = cv2.cvtColor(img,cv2.COLOR_GRAY2RGB)
-    img = draw_field_view(img)
+    # img = draw_field_view(img)
 
     color = [20,150,20]
     # img[img==color] =
@@ -118,6 +134,17 @@ while not rospy.is_shutdown():
 
     # img = cv2.arrowedLine(img, (robot_x, robot_y), (int(robot_x+ (arrow_l*10*np.cos(robot_theta+1.0472))), int(robot_y+ (arrow_l*10*np.sin(robot_theta+1.0472)))), [0,0,255], 1)
     # img = cv2.arrowedLine(img, (robot_x, robot_y), (int(robot_x+ (arrow_l*10*np.cos(robot_theta-1.0472))), int(robot_y+ (arrow_l*10*np.sin(robot_theta-1.0472)))), [0,0,255], 1)
+    font                   = cv2.FONT_HERSHEY_SIMPLEX
+    fontScale              = 0.5
+    fontColor              = (0,0,255)
+    lineType               = 2
+
+    cv2.putText(img,"(" + str(round(robot_x-512, 2)) + ", " + str(round(robot_y-512, 2)) + ", " + str(round(robot_theta*57.2958, 2)) + ")", 
+    (400+10,400+20), 
+    font, 
+    fontScale,
+    fontColor,
+    lineType)
 
     # show map
     cv2.imshow('Getting map', img)

@@ -77,6 +77,7 @@ class ObjectDetectionNode:
                 # cv2.imshow('image',img)
                 img_msg = self.bridge.cv2_to_imgmsg(image, "bgr8")
                 detection_image_pub.publish(img_msg)
+                print(out_classes)
                 msg = self.convert_results_to_message(out_boxes, out_scores, out_classes)
                 detection_results_pub.publish(msg)
             rate.sleep()
