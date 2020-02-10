@@ -65,7 +65,6 @@ while not rospy.is_shutdown():
     fontScale,
     fontColor,
     lineType)
-
     cv2.imshow('Scanning for fire', img)
 
     

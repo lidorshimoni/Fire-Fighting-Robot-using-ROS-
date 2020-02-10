@@ -1,36 +1,16 @@
 #! /usr/bin/env python3
 
-# MIT License
+# from tensorflow.compat.v1 import ConfigProto
+# from tensorflow.compat.v1 import InteractiveSession
 
-# Copyright (c) 2017 Yongyang Nie
+# config = ConfigProto()
+# config.gpu_options.allow_growth = True
+# session = InteractiveSession(config=config)
 
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
-"""
-Run a YOLO_v3 style detection model test images.
-The ros node calls (uses) this class to run object detection
-for questions, contact: contact@neilnie.com
-
-"""
 import colorsys
 import cv2
 import os
+print("-"*20, os.environ['PYTHONPATH'].split(os.pathsep))
 # import model_data.configs as configs
 import numpy as np
 from keras import backend as K
@@ -39,7 +19,8 @@ from keras.layers import Input
 from PIL import Image, ImageDraw, ImageFont
 from yolo3.model import yolo_eval, yolo_body, tiny_yolo_body
 
-font_path = '/home/lidor/catkin_ws/src/Fire-Fighting-Robot-using-ROS-/font/FiraMono-Medium.otf'
+from tensorflow.compat.v1.keras import backend as K
+font_path = '/home/lidor/catkin_ws/src/fire-fighting-robot/font/FiraMono-Medium.otf'
 
 class ObjectDetector:
 
@@ -66,7 +47,7 @@ class ObjectDetector:
 
         self.class_names = self._get_class()
         self.anchors = self._get_anchors()
-        self.sess = K.get_session()
+        self.sess =  K.get_session()
 
         # Load model, or construct model and load weights.
         num_anchors = len(self.anchors)
