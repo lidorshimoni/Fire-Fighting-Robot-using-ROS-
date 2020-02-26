@@ -79,17 +79,18 @@ class detectedObjectLocation():
         self.out_class = object_data.out_class
         self.out_score = object_data.out_score
         self.box = object_data.location
-        self.angle_in_view = ((self.box[1]/640*120 + self.box[3]/640*120)/2 -60)*3.1416/180 # to rad
+        self.angle_in_view = ((self.box[1]/640*120 + self.box[3]/640*120)/2 -35 ) *3.1416/180 # to rad # TODO
 
 def add_person(distance, angle):
     global persons
-    x, y = (int(robot_x+ (distance*np.cos(angle))), int(robot_y+ (distance*np.sin(angle))))
+    if distance == float("inf"):
+        return
+
+    x, y = (int(robot_x+ (distance*np.cos(robot_theta + angle))), int(robot_y+ (distance*np.sin(robot_theta + angle))))
     for per in persons:
-        if per.distance(x,y) < 10:
+        if per.distance(x,y) < 20:
             return
     persons.append(person(x, y))
-
-
 
 
 def detection_results_callback (data):
@@ -105,7 +106,9 @@ def laser_scan_callback (scan):
     min = scan.angle_min
     inc = scan.angle_increment
     for obj in detected_objects:
-        add_person(float(scan.ranges[int((obj.angle_in_view/4.18879)*len(scan.ranges))]) * 2, obj.angle_in_view)
+        distance = float(scan.ranges[int(((obj.angle_in_view/2)/scan.angle_max)*len(scan.ranges))])# TODO
+        # print(distance)
+        add_person(distance*10, obj.angle_in_view)
 
 
 rospy.init_node('map_img', anonymous = True)
@@ -122,7 +125,7 @@ ros_pose = rospy.wait_for_message('/slam_out_pose', PoseStamped)
 pose_sub = rospy.Subscriber('/detection/object/detection_result', DetectionResults, detection_results_callback)
 ros_pose = rospy.wait_for_message('/detection/object/detection_result', DetectionResults)
 
-# subscibe to detection_result
+# subscibe to laser scan
 pose_sub = rospy.Subscriber('/scan', LaserScan, laser_scan_callback)
 ros_pose = rospy.wait_for_message('/scan', LaserScan)
 
@@ -168,8 +171,14 @@ arrow_l = 10
 def draw_persons(img):
     global persons
     for per in persons:
-        # img = cv2.circle(img, per.get_pos(), 3, [250,150,0], 1)
-        img = cv2.arrowedLine(img, (int(robot_x), int(robot_y)), per.get_pos(), [10,10,60], 1)
+        x,y = per.get_pos()
+        if img[x][y].all() != 255:
+            img = cv2.circle(img, (x,y), 3, [0,250,0], 1)
+            # img = cv2.arrowedLine(img, (int(robot_x), int(robot_y)), (x,y), [10,10,60], 1)
+        
+    # for obj in detected_objects:
+    #     img = cv2.arrowedLine(img, (int(robot_x), int(robot_y)), (int(robot_x+ (25*np.cos(robot_theta + obj.angle_in_view))), int(robot_y+ (25*np.sin(robot_theta + obj.angle_in_view)))), [10,10,60], 1)
+
 
     return img
 
@@ -179,16 +188,14 @@ while not rospy.is_shutdown():
     img = map.astype(np.uint8)
     # img = cv2.resize(img, dsize=(1024, 1024), interpolation=cv2.INTER_NEAREST)
 
-
     # make RGB - beutify
-    img[img==-1] = 255
-    img[img==0] = 180
-    img[img<180] = 0
+    img[img==-1] = 255 # unknown
+    img[img==0] = 180 # known
+    img[img<180] = 0 # wall / obsticle
     img = cv2.cvtColor(img,cv2.COLOR_GRAY2RGB)
     # img = draw_field_view(img)
 
-    color = [20,150,20]
-    # img[img==color] =
+    # print(img[0][0])
 
 
 
@@ -197,9 +204,7 @@ while not rospy.is_shutdown():
     circle_r = 2
     arrow_l = 10
     img = cv2.arrowedLine(img, (int(robot_x), int(robot_y)), (int(robot_x+ (arrow_l*np.cos(robot_theta))), int(robot_y+ (arrow_l*np.sin(robot_theta)))), [255,0,0], 1)
-    # print('-'*50)
-    # print((robot_x,robot_y), circle_r, [250,0,0], 1)
-    # print('-'*50)
+
 
     img = cv2.circle(img, (int(robot_x), int(robot_y)), circle_r, [250,0,0], 1)
 
