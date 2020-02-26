@@ -1,0 +1,8 @@
+
+build/
+
+.vscode/
+
+yolov3-keras.h5
+
+src/obj_detection/model_data/__ignore__yolov3-keras.h5
